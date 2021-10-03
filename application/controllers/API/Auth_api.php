@@ -14,7 +14,7 @@ class Auth_api extends REST_Controller
     {
         parent::__construct();
         $this->load->database();
-        $this->load->helper('jwt', 'authorization');
+        $this->load->helper(['jwt', 'authorization']);
     }
 
     public function index_POST()
@@ -24,11 +24,11 @@ class Auth_api extends REST_Controller
     }
     private function _login()
     {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
+        $email = $this->post('email');
+        $password = $this->post('password');
 
         $user = $this->db->get_where('user', ['email' => $email])->row_array();
-
+// var_dump($user); die;
         if ($user) {
             //jika usernya aktif
             if ($user['is_active'] == 1) {
@@ -43,7 +43,7 @@ class Auth_api extends REST_Controller
                     ];
                     $token = AUTHORIZATION::generateToken($data);
                     $this->session->set_userdata($data);
-                    if ($user['role_id'] == 1) {
+                    if ($user['role_id'] == true) {
                         $this->response([
                             'message' => 'berhasil',
                             'status' => true,
