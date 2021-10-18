@@ -1,3 +1,6 @@
+
+<script src="<?= base_url() ?>assets/sbadmin2/vendor/jquery/jquery.min.js"></script>
+
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -19,6 +22,37 @@
                     <li class="breadcrumb-item active" aria-current="page"><?= $title ?></li>
                 </ol>
             </nav>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Filter</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-info text-white" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input type="date" class="form-control" placeholder="Start Date" id="start_date" >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-info text-white" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="End Date" id="end_date" readonly>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="row">
@@ -110,3 +144,9 @@
 
 
 </div>
+
+<script>
+    $(document).ready(function(){
+        
+    })
+</script>

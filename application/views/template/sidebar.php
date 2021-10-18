@@ -1,12 +1,24 @@
  <!-- Sidebar -->
+
+ <style>
+        #logo{
+   
+    margin-left:2px;
+    margin-right:10px;
+    margin-top:5%;
+    width:60%;
+    height:40%;
+}
+ </style>
  <ul class="navbar-nav bg-gradient-info sidebar sidebar-dark accordion" id="accordionSidebar">
 
      <!-- Sidebar - Brand -->
      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-         <div class="sidebar-brand-icon rotate-n-15">
-             <i class="fas fa-clipboard-list"></i>
+         <div class="sidebar-brand-icon">
+             <!-- <i class="fas fa-user"></i> -->
+             <img src="<?= base_url(); ?>assets/img/profil/logo_size.jpg" class="rounded-circle" id="logo">
          </div>
-         <div class="sidebar-brand-text mx-3"><strong>SMART MD<sup></sup></strong></div>
+         <div class="sidebar-brand-text mx-" style="margin-left: 0px;"><strong>SMARTMD</strong></div>
      </a>
 
      <!-- Divider -->

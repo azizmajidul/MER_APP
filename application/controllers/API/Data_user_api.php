@@ -101,8 +101,8 @@ class Data_user_api extends REST_Controller
                     'status' => true,
                     'Data' => $data
 
-                ], REST_Controller::HTTP_OK,
-                );
+                ], REST_Controller::HTTP_OK
+            );
             }else {
                 $this->response(
                     [
