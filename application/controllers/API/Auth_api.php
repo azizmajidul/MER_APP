@@ -38,6 +38,8 @@ class Auth_api extends REST_Controller
 
                     $data = [
                         'id' => $user['id'],
+                        'name' =>$user['name'],
+                        'password' => $user['password'],
                         'email' => $user['email'],
                         'role_id' => $user['role_id']
                     ];

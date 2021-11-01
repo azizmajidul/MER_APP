@@ -20,6 +20,8 @@
     <link href="<?= base_url() ?>assets/sbadmin2/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+
 
 
 

@@ -58,7 +58,34 @@
 
 <!-- Page level custom scripts -->
 
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
 
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+
+<!-- export DataTable Js -->
+<script src="//cdn.datatables.net/buttons/2.0.1/js/dataTables.buttons.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+
+
+
+
+
+<script>
+    $(function() {
+        $("#start_date").datepicker({
+            "dateFormat": "yy-mm-dd"
+        });
+        $("#end_date").datepicker({
+            "dateFormat": "yy-mm-dd"
+        });
+    });
+</script>
 
 
 <script>
@@ -121,7 +148,150 @@
 
 
     });
+
+
+
+    // $(document).ready(function() {
+
+    //     var table = $('#table_report').DataTable({
+    //         scrollY: "300px",
+    //         scrollX: true,
+    //         scrollCollapse: true,
+    //         paging: true,
+    //         fixedColumns: {
+    //             leftColumns: 1,
+    //             rightColumns: 1
+    //         }
+    //     })
+    // })
+
+
+    function getData(start_date, end_date) {
+        $.ajax({
+            url: "report_c/tampil",
+            type: "POST",
+            data: {
+                start_date: start_date,
+                end_date: end_date
+            },
+            dataType: "json",
+            success: function(data) {
+                // dataTables
+                var i = "1";
+                $('#table_report').DataTable({
+                    scrollY: "300px",
+                    scrollX: true,
+                    scrollCollapse: true,
+                    paging: true,
+                    fixedColumns: {
+                        leftColumns: 1,
+                        rightColumns: 1
+                    },
+                    "data": data,
+                    dom: 'Bfrtip',
+                    buttons: [
+                         'csv', 'excel',
+                    ],
+                    "columns": [{
+                            "data": "id_user"
+                        },
+                        {
+                            "data": "user_name"
+                        },
+                       
+                        {
+                            "data": "email"
+                        },
+                        {
+                            "data": "area_coverage"
+                        },
+                        {
+                            "data": "store_id"
+                        },
+                        {
+                            "data": "store_name"
+                        },
+                        {
+                            "data": "store_type"
+                        },
+                        {
+                            "data": "dc"
+                        },
+                        {
+                            "data": "product_name"
+                        },
+                        {
+                            "data": "category_name"
+                        },
+                        {
+                            "data": "company"
+                        },
+                        {
+                            "data": "qty"
+                        },
+                        {
+                            "data": "facing"
+                        },
+                        {
+                            "data": "price_card"
+                        },
+                        {
+                            "data": "fifo_product"
+                        },
+                        {
+                            "data": "normal_price"
+                        },
+                        {
+                            "data": "promo_price"
+                        },
+                        {
+                            "data": "tanggal",
+
+                        },
+                    ]
+                });
+
+            }
+
+        });
+
+    }
+    getData();
+    // fetch();
+
+
+
+
+    // Filter
+    $(document).on("click", "#filter", function(e) {
+        e.preventDefault();
+        var start_date = $("#start_date").val();
+        var end_date = $("#end_date").val();
+
+
+        if (start_date == "" || end_date == "") {
+            alert("Please Select The Date!!!");
+        } else {
+
+            $('#table_report').DataTable().destroy();
+            getData(start_date, end_date);
+            // alert(start_date + end_date);
+
+
+        }
+
+    });
+    $(document).on("click", "#reset", function(e) {
+        e.preventDefault();
+        $("#start_date").val("");
+        $("#end_date").val("");
+        $('#table_report').DataTable().destroy();
+        getData();
+
+
+    });
 </script>
+
 
 </body>
 

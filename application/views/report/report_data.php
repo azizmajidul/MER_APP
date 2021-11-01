@@ -1,4 +1,3 @@
-
 <script src="<?= base_url() ?>assets/sbadmin2/vendor/jquery/jquery.min.js"></script>
 
 <div class="container-fluid">
@@ -39,7 +38,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text bg-info text-white" id="basic-addon1"><i class="far fa-calendar-alt"></i></span>
                         </div>
-                        <input type="date" class="form-control" placeholder="Start Date" id="start_date" >
+                        <input type="text" class="form-control" placeholder="Start Date" id="start_date" readonly>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -51,6 +50,20 @@
                     </div>
 
                 </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <button id="filter" class="btn btn-outline-info btn-sm">Filter </button>
+                                <button id="reset" class="btn btn-outline-warning btn-sm">Reset </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
             </div>
 
         </div>
@@ -71,13 +84,12 @@
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered table-striped" id="table1" style="width: 100%;">
+                    <table class="table table-hover table-bordered table-striped" id="table_report" style="width: 100%;">
                         <thead>
                             <tr>
-                                <th scope="col">No</th>
+                                <!-- <th scope="col">No</th> -->
                                 <th scope="col">User ID</th>
                                 <th scope="col">User Name</th>
-                                <th scope="col">Position</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Area Coverage</th>
                                 <th scope="col">Store Code</th>
@@ -93,12 +105,12 @@
                                 <th scope="col">Fifo</th>
                                 <th scope="col">Normal Price</th>
                                 <th scope="col">Promo Price</th>
-                                <th scope="col">Image</th>
+                                <!-- <th scope="col">Image</th> -->
                                 <th scope="col">Date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $no = 1; ?>
+                            <!-- <?php $no = 1; ?>
                             <?php foreach ($row->result() as $key => $data) : ?>
                                 <tr>
                                     <th><?= $no ?></th>
@@ -127,7 +139,7 @@
                                     </th>
                                 </tr>
                                 <?php $no++; ?>
-                            <?php endforeach; ?>
+                            <?php endforeach; ?> -->
                         </tbody>
 
                     </table>
@@ -146,7 +158,7 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-        
+    $(document).ready(function() {
+
     })
 </script>

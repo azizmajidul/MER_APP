@@ -16,7 +16,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>"><i class="fas fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><?= $title ?></li>
+                    <li class="breadcrumb-item active" aria-current="page"> <i class="fas fa-store-alt"></i> <span><?= $title ?></span></li>
                 </ol>
             </nav>
         </div>
@@ -37,7 +37,7 @@
 
                 </div>
                 <div class="card-body">
-                    <table class="table table-hover table-bordered table-striped" id="table1" style="width: 100%;">
+                    <table class="table table-hover table-bordered table-striped table-responsive" id="table1" style="width: 100%;">
                         <thead>
                             <tr>
                                 <th scope="col">No</th>
@@ -70,8 +70,8 @@
                                     <th><?= $data->updated_by ?></th>
 
                                     <th>
-                                        <a href="<?= base_url('store_c/edit/' . $data->id) ?>" class="badge badge-success btn-xs "><i class="fas fa-pencil-alt"> update</i></a>
-                                        <a href="<?= base_url('store_c/del/' . $data->id) ?>" onclick=" return confirm('Apakah Anda Yakin Akan Menghapus Data Ini ?') " class="badge badge-danger btn-xs "><i class="fas fa-trash"> Delete</i></a>
+                                        <a href="<?= base_url('store_c/edit/' . $data->id) ?>" class="btn btn-primary btn-sm "><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="<?= base_url('store_c/del/' . $data->id) ?>" onclick=" return confirm('Apakah Anda Yakin Akan Menghapus Data Ini ?') " class="btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
 
                                     </th>
                                 </tr>

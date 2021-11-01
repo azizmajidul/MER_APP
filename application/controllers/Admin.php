@@ -8,7 +8,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         cek_login();
-        $this->load->model('Role_m', 'role_model');
+        $this->load->model('Role_m', 'role_model', 'count_m');
     }
 
     public function index()
@@ -16,6 +16,16 @@ class Admin extends CI_Controller
         $data['title'] = "Dashboard";
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
+
+
+        
+
+$this->load->model('count_m');
+        $data['user_count'] = $this->count_m->getUser()->num_rows();
+        $data['user_count2'] = $this->count_m->getUser2()->num_rows();
+        $data['store_count'] = $this->count_m->getStore()->num_rows();
+        $data['product_count'] = $this->count_m->getProduct()->num_rows();
+        
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar', $data);
@@ -31,6 +41,9 @@ class Admin extends CI_Controller
 
 
         $data['role'] = $this->db->get('role_user')->result_array();
+
+       
+        
        
 
         $this->load->view('template/header', $data);

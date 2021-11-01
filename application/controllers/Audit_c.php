@@ -107,7 +107,7 @@ class Audit_c extends CI_Controller
             'fifo_product' => $this->input->post('fifo'),
             'normal_price' => $this->input->post('normal_price'),
             'promo_price' => $this->input->post('promo_price'),
-            'created_date' => 'NOW()'
+
         ];
 
         $this->db->insert('t_report', $data);
