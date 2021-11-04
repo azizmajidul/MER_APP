@@ -4,7 +4,7 @@ class Api_model extends CI_Model
 
     public function getDataUser()
     {
-        $this->db->select('a.*, b.*');
+        $this->db->select('a.name', 'a.id');
         $this->db->from('user a');
         $this->db->join('role_user b', 'a.role_id = b.role_id');
         $query = $this->db->get()->result_array();
@@ -85,11 +85,14 @@ class Api_model extends CI_Model
     }
     public function getHistory()
     {
+        $date = new DateTime("now");
+        $current_date = $date->format('Y-m-d');
         $this->db->select("a.created_date, b.store_id, b.store_name, c.product_name, d.email");
         $this->db->from("t_report a");
         $this->db->join("t_store b", "a.store_id = b.id");
         $this->db->join("t_produk c", "a.product_id = c.product_id");
         $this->db->join("user d", " a.user_id = d.id");
+        $this->db->where("a.created_date", $current_date);
         $query =  $this->db->get()->result_array();
         return  $query;
     }

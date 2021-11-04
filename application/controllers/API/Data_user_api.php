@@ -57,7 +57,7 @@ class Data_user_api extends REST_Controller
     public function index_GET()
     {
         $this->load->model('api_model');
-        $data = $this->api_model->getUser();
+        $data = $this->api_model->getDataUser();
         // var_dump($data); die;
         if ($data == true) {
             $this->response(

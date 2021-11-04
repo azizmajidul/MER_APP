@@ -50,7 +50,7 @@
                             <label for="role_id" class="col-sm-3 col-form-label"><i class="fas fa-user-tie"></i> Position</label>
                             <div class="col-sm-9">
                                 <select name="role_id" id="role_id" class="form-control">
-                                    <option value="">Select</option>
+                                    <option value="<?= $users['role_id'] ?>"><?= $users['role_id'] == 1 ? "Admin" : "MD"; ?></option>
                                     <?php foreach ($role as $r) : ?>
 
                                         <option value="<?= $r['role_id'] ?>"><?= $r['role']; ?> </option>

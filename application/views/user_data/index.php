@@ -33,7 +33,7 @@
                                 <th scope="col">Area Coverage</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Position</th>
-                                <th scope="col">Profil Image</th>
+                                <!-- <th scope="col">Profil Image</th> -->
                                 <th scope="col">Status</th>
                                 
                                 <th scope="col">Action</th>
@@ -50,9 +50,9 @@
                                     <td><?= $data['area_coverage'] ?></td>
                                     <td><?= $data['address'] ?></td>
                                     <td><?= $data['role_id'] == 1 ? "Admin" : "Merchandiser" ?></td>
-                                    <td>
+                                    <!-- <td>
                                         <img src="<?= base_url('assets/img/profil/') . $data['image'] ?>" class="img-thumbnail" style="width:100px">
-                                    </td>
+                                    </td> -->
                                     <td>
 
                                         <?= $data['is_active'] == 1 ? '<label class="badge badge-success badge-sm"> Active </label>' : '<label class="badge badge-danger badge-sm">Non Active </label>'  ?>

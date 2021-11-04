@@ -56,7 +56,8 @@ class User extends CI_Controller
 
                 $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('image')) {
+                if ($this->upload->do_upload('image')) 
+                {
 
                     $default_image = $data['user']['image'];
 
