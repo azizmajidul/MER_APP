@@ -54,34 +54,73 @@ class History_api extends REST_Controller
             $this->response($response, parent::HTTP_OK);
         }
     }
-    public function index_GET()
+    // public function index_GET()
+    // {
+    //     // $this->load->model('user_data_m');
+    //     // $data = $this->user_data_m->get();
+
+    //     $this->load->model('api_model');
+    //     $data = $this->api_model->getHistory();
+    //     // var_dump($data); die;
+    //     if ($data == true) {
+    //         $this->response(
+    //             [
+    //                 'message' => 'Success',
+    //                 'status' => true,
+    //                 'Data' => $data
+    //             ],
+    //             REST_Controller::HTTP_OK
+
+    //         );
+    //     } else {
+    //         $this->response(
+    //             [
+    //                 'message' => 'gagal',
+    //                 'status' => false,
+    //                 'Data' => $data
+    //             ],
+    //             REST_Controller::HTTP_OK
+
+    //         );
+    //     }
+    // }
+
+
+
+    function index_get()
     {
-        // $this->load->model('user_data_m');
-        // $data = $this->user_data_m->get();
+        $date = new DateTime("now");
+        $current_date = $date->format('Y-m-d');
+        $id = $this->get('email');
+        if ($id == '') {
+            $this->db->select("a.created_date, b.store_id, b.store_name, c.product_name, d.email");
+            $this->db->from("t_report a");
+            $this->db->join("t_store b", "a.store_id = b.id");
+            $this->db->join("t_produk c", "a.product_id = c.product_id");
+            $this->db->join("user d", " a.user_id = d.id");
+            $this->db->where("a.created_date", $current_date);
+            $query =  $this->db->get()->result_array();
+            $this->response([
+                'message' => 'success',
+                'status' => true,
+                'Data' => $query
 
-        $this->load->model('api_model');
-        $data = $this->api_model->getHistory();
-        // var_dump($data); die;
-        if ($data == true) {
-            $this->response(
-                [
-                    'message' => 'Success',
-                    'status' => true,
-                    'Data' => $data
-                ],
-                REST_Controller::HTTP_OK
-
-            );
+            ]);
         } else {
-            $this->response(
-                [
-                    'message' => 'gagal',
-                    'status' => false,
-                    'Data' => $data
-                ],
-                REST_Controller::HTTP_OK
-
-            );
+            $this->db->select("a.created_date, b.store_id, b.store_name, c.product_name, d.email");
+            $this->db->from("t_report a");
+            $this->db->join("t_store b", "a.store_id = b.id");
+            $this->db->join("t_produk c", "a.product_id = c.product_id");
+            $this->db->join("user d", " a.user_id = d.id");
+            $this->db->where("a.created_date", $current_date);
+            $this->db->where('d.email', $id);
+            $query =  $this->db->get()->result_array();
         }
+        $this->response([
+            'message' => 'success',
+            'status' => true,
+            'Data' => $query
+
+        ]);
     }
 }

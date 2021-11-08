@@ -2,11 +2,21 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <!-- <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1> -->
     <?= $this->session->flashdata('message'); ?>
+    <div class="row">
+        <div class="col-lg-8">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $title ?></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-8">
             <div class="card shadow mb-4 border-bottom-primary">
                 <div class="card-header">
                     <h6 class="m-0 font-weight-bold text-primary">Ubah Password <i class="fas fa fa-key"></i></h6>
@@ -33,8 +43,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <a href="<?= site_url('user'); ?>" class="btn btn-warning"><i class="far fa-hand-point-left"> Back</i></a>
-                                    <button type="submit" class="btn btn-primary"> Change Password <i class="fas fa-key"></i>
+                                    <a href="<?= site_url('user'); ?>" class="btn btn-outline-warning"><i class="far fa-hand-point-left"> Back</i></a>
+                                    <button type="submit" class="btn btn-outline-primary"> Change Password <i class="fas fa-key"></i>
                                     </button>
                                 </div>
                             </form>

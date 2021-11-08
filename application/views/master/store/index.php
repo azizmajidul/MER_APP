@@ -1,7 +1,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <!-- <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1> -->
     <?= form_error(
         'menu',
         '<div class="alert alert-danger" role="alert">',
@@ -70,7 +70,7 @@
                                     <th><?= $data->updated_by ?></th>
 
                                     <th>
-                                        <a href="<?= base_url('store_c/edit/' . $data->id) ?>" class="btn btn-primary btn-sm "><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="<?= base_url('store_c/edit/' . $data->id) ?>" class="btn btn-outline-primary btn-sm "><i class="fas fa-pencil-alt"></i></a>
                                         <a href="<?= base_url('store_c/del/' . $data->id) ?>" onclick=" return confirm('Apakah Anda Yakin Akan Menghapus Data Ini ?') " class="btn btn-danger btn-sm "><i class="fas fa-trash"></i></a>
 
                                     </th>

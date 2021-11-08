@@ -55,7 +55,7 @@ class Auth_api extends REST_Controller
                     } else {
                         $this->response(
                             [
-                                'message' => 'gagal',
+                                'message' => 'Please Check Your Data',
                                 'status' => false,
                             ],
                             REST_Controller::HTTP_OK

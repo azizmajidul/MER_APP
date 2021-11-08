@@ -56,70 +56,85 @@ class Data_user_api extends REST_Controller
     }
     public function index_GET()
     {
-        $this->load->model('api_model');
-        $data = $this->api_model->getDataUser();
+        $email = $this->get('email');
+        if ($email == '') {
+            $this->db->select("a.id,a.name, a.area_coverage, a.address, a.city, a.email, b.role");
+            $this->db->from('user a');
+            $this->db->join('role_user b', 'a.role_id = b.role_id');
+
+            $query =  $this->db->get()->result_array();
+            $this->response([
+                'message' => 'success',
+                'status' => true,
+                'Data' => $query
+
+            ]);
+        } else {
+            $this->db->select("a.id,a.name, a.area_coverage, a.address, a.city, a.email, b.role");
+            $this->db->from('user a');
+            $this->db->join('role_user b', 'a.role_id = b.role_id');
+            $this->db->where('a.email', $email);
+
+            $query =  $this->db->get()->result_array();
+        }
         // var_dump($data); die;
-        if ($data == true) {
+        if ($query == true) {
             $this->response(
                 [
                     'message' => 'Success',
                     'status' => true,
-                    'Data' => $data
+                    'Data' => $query
                 ],
                 REST_Controller::HTTP_OK
-                
+
             );
-        }else {
+        } else {
             $this->response(
                 [
                     'message' => 'gagal',
                     'status' => false,
-                    'Data' => $data
+                    'Data' => $query
                 ],
                 REST_Controller::HTTP_OK
-                
+
             );
         }
     }
 
 
-    public function index_post(){
-       
-        $data = [
-            'name' => $this->post('name'),
-            'email' => $this->post('email')
-        ];
-        // var_dump($data);
+    // public function index_post(){
 
-          
-            $insert = $this->db->insert('user', $data);
+    //     $data = [
+    //         'name' => $this->post('name'),
+    //         'email' => $this->post('email')
+    //     ];
+    //     // var_dump($data);
 
-            if($insert){
-            $this->response(
-                [
-                    'message' => 'Berhasil Input',
-                    'status' => true,
-                    'Data' => $data
 
-                ], REST_Controller::HTTP_OK
-            );
-            }else {
-                $this->response(
-                    [
-                        'message' => 'Gagal Input',
-                        'status' => false,
-    
-                    ], REST_Controller::HTTP_OK
-                    );
-            }
+    //         $insert = $this->db->insert('user', $data);
 
-    }
+    //         if($insert){
+    //         $this->response(
+    //             [
+    //                 'message' => 'Berhasil Input',
+    //                 'status' => true,
+    //                 'Data' => $data
 
-    
+    //             ], REST_Controller::HTTP_OK
+    //         );
+    //         }else {
+    //             $this->response(
+    //                 [
+    //                     'message' => 'Gagal Input',
+    //                     'status' => false,
 
-    
+    //                 ], REST_Controller::HTTP_OK
+    //                 );
+    //         }
+
+    // }
+
+
+
+
 }
-
-
-
-

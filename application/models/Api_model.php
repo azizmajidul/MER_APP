@@ -45,18 +45,20 @@ class Api_model extends CI_Model
     }
 
 
-    public function getStoreVisit()
+    public function getStoreVisit($email)
     {
+
         $date = new DateTime("now");
         $current_date = $date->format('Y-m-d');
         $email =  $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-        $this->db->select('a.schedule_id,c.id as id_toko,c.store_id,c.store_name ,b.id');
+        $this->db->select('a.schedule_id,c.id as id_toko,c.store_id,c.store_name , b.id, b.email');
         // $this->db->where('b.email', $this->session->userdata('email'));
         $this->db->from('t_schedule_visit a');
         $this->db->join('user b', 'a.user_id = b.id');
         $this->db->join('t_store c', 'a.store_id = c.id');
         $this->db->where('a.date', $current_date);
+        $this->db->where('b.email', $email);
         $this->db->order_by('store_name', 'ASC');
         $query = $this->db->get()->result_array();
         return $query;
@@ -92,7 +94,7 @@ class Api_model extends CI_Model
         $this->db->join("t_store b", "a.store_id = b.id");
         $this->db->join("t_produk c", "a.product_id = c.product_id");
         $this->db->join("user d", " a.user_id = d.id");
-        $this->db->where("a.created_date", $current_date);
+        // $this->db->where("a.created_date", $current_date);
         $query =  $this->db->get()->result_array();
         return  $query;
     }

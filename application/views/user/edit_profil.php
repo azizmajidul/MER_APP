@@ -67,8 +67,8 @@
                         </div>
                         <div class="form-group row justify-content-end">
                             <div class="col-sm-10">
-                                <a href="<?= site_url('user'); ?>" class="btn btn-warning"><i class="far fa-hand-point-left"> Back</i></a>
-                                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"> Save</i></button>
+                                <a href="<?= site_url('user'); ?>" class="btn btn-outline-warning"><i class="far fa-hand-point-left"> Back</i></a>
+                                <button type="submit" class="btn btn-outline-primary"><i class="fas fa-paper-plane"> Save</i></button>
                             </div>
 
 

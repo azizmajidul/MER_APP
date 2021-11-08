@@ -2,7 +2,17 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <!-- <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1> -->
+    <div class="row">
+        <div class="col-lg-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?= base_url('admin') ?>"><i class="fas fa-home"></i> Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"><?= $title ?></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 
     <div class="row">
 
@@ -87,11 +97,13 @@
                 <div class="text-center">
                     <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="vendor/sbadmin2/img/undraw_posting_photo.svg" alt="">
                 </div>
-                <center><p>Smart md is a digital platform that will help your business grow, 
-                    We offer a product in the form of managing data management MD performance reports to lead to rapid business growth.Come join us now to growth our busiines together.Smart MD is a powerfull performance for your bussines to become number one 
+                <center>
+                    <p>Smart md is a digital platform that will help your business grow,
+                        We offer a product in the form of managing data management MD performance reports to lead to rapid business growth.Come join us now to growth our busiines together.Smart MD is a powerfull performance for your bussines to become number one
 
-                </p></center>
-                
+                    </p>
+                </center>
+
             </div>
         </div>
     </div>
